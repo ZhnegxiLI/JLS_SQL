@@ -35,13 +35,13 @@ GO
 */
 
 
-/* 
+
+/**********************************************************************************
 * BEGIN 
 * Author : ZLI
 * DATE : 13/02/2020 
 * Description : 导入商品部分信息
-*/
-
+/**********************************************************************************/
 IF NOT EXISTS (SELECT * FROM ReferenceItem)
 BEGIN
 IF OBJECT_ID('tempdb..#Product') IS NOT NULL 
@@ -2216,9 +2216,48 @@ where ri.ReferenceCategoryId = @Product
 END
 GO
 
-/* 
+/**********************************************************************************
 * END 
 * Author : ZLI
 * DATE : 13/02/2020 
 * Description : 导入商品部分信息
-*/
+/**********************************************************************************/
+
+
+
+
+/**********************************************************************************
+* BEGIN 
+* Author : ZLI
+* DATE : 13/02/2020 
+* Description : 加入三种权限
+/**********************************************************************************/
+  IF NOT EXISTS (SELECT * FROM [AspNetRoles] WHERE Name = 'Client')
+  BEGIN 
+	  INSERT INTO [AspNetRoles] (Name,NormalizedName)
+	  VALUES('Client','CLIENT')
+  END
+  GO
+
+
+  IF NOT EXISTS (SELECT * FROM [AspNetRoles] WHERE Name = 'Admin')
+  BEGIN 
+	  INSERT INTO [AspNetRoles] (Name,NormalizedName)
+	  VALUES('Admin','ADMIN')
+  END
+  GO
+
+
+  IF NOT EXISTS (SELECT * FROM [AspNetRoles] WHERE Name = 'SuperAdmin')
+  BEGIN 
+	  INSERT INTO [AspNetRoles] (Name,NormalizedName)
+	  VALUES('SuperAdmin','SUPERADMIN')
+  END
+  GO
+  
+/**********************************************************************************
+* END 
+* Author : ZLI
+* DATE : 13/02/2020 
+* Description : 加入三种权限
+/**********************************************************************************/
