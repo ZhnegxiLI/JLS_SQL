@@ -154,11 +154,9 @@ CREATE TABLE [AspNetUsers] (
     [UpdatedOn] datetime2 NULL,
     [Siret] nvarchar(max) NULL,
     [EntrepriseName] nvarchar(max) NULL,
-    [DefaultShippingAdressId] bigint NOT NULL,
     [FacturationAdressId] bigint NOT NULL,
     CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id]),
-    CONSTRAINT [FK_AspNetUsers_Adress_DefaultShippingAdressId] FOREIGN KEY ([DefaultShippingAdressId]) REFERENCES [Adress] ([Id]) ON DELETE CASCADE,
-    CONSTRAINT [FK_AspNetUsers_Adress_FacturationAdressId] FOREIGN KEY ([FacturationAdressId]) REFERENCES [Adress] ([Id])
+    CONSTRAINT [FK_AspNetUsers_Adress_FacturationAdressId] FOREIGN KEY ([FacturationAdressId]) REFERENCES [Adress] ([Id]) ON DELETE CASCADE
 );
 
 GO
@@ -275,6 +273,37 @@ CREATE TABLE [UserPreferenceCategory] (
 
 GO
 
+CREATE TABLE [UserShippingAdress] (
+    [Id] bigint NOT NULL IDENTITY,
+    [CreatedOn] datetime2 NULL,
+    [CreatedBy] bigint NULL,
+    [UpdatedOn] datetime2 NULL,
+    [UpdatedBy] bigint NULL,
+    [UserId] int NOT NULL,
+    [ShippingAdressId] bigint NOT NULL,
+    CONSTRAINT [PK_UserShippingAdress] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserShippingAdress_Adress_ShippingAdressId] FOREIGN KEY ([ShippingAdressId]) REFERENCES [Adress] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserShippingAdress_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id])
+);
+
+GO
+
+CREATE TABLE [UserToken] (
+    [Id] bigint NOT NULL IDENTITY,
+    [CreatedOn] datetime2 NULL,
+    [CreatedBy] bigint NULL,
+    [UpdatedOn] datetime2 NULL,
+    [UpdatedBy] bigint NULL,
+    [Token] nvarchar(max) NULL,
+    [Expires] datetime2 NOT NULL,
+    [Active] bit NOT NULL,
+    [UserId] int NOT NULL,
+    CONSTRAINT [PK_UserToken] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserToken_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
 CREATE TABLE [OrderInfoLog] (
     [Id] bigint NOT NULL IDENTITY,
     [CreatedOn] datetime2 NULL,
@@ -310,10 +339,6 @@ CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
 GO
 
 CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
-
-GO
-
-CREATE INDEX [IX_AspNetUsers_DefaultShippingAdressId] ON [AspNetUsers] ([DefaultShippingAdressId]);
 
 GO
 
@@ -377,13 +402,68 @@ CREATE INDEX [IX_UserPreferenceCategory_UserId1] ON [UserPreferenceCategory] ([U
 
 GO
 
-INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200202001935_initial', N'2.2.6-servicing-10079');
+CREATE INDEX [IX_UserShippingAdress_ShippingAdressId] ON [UserShippingAdress] ([ShippingAdressId]);
+
+GO
+
+CREATE INDEX [IX_UserShippingAdress_UserId] ON [UserShippingAdress] ([UserId]);
+
+GO
+
+CREATE INDEX [IX_UserToken_UserId] ON [UserToken] ([UserId]);
 
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200204235337_initial2', N'2.2.6-servicing-10079');
+VALUES (N'20200211204827_changeStructure', N'2.2.6-servicing-10079');
+
+GO
+
+ALTER TABLE [Adress] DROP CONSTRAINT [FK_Adress_ReferenceItem_CountryId];
+
+GO
+
+DROP INDEX [IX_Adress_CountryId] ON [Adress];
+
+GO
+
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Adress]') AND [c].[name] = N'CountryId');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Adress] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Adress] DROP COLUMN [CountryId];
+
+GO
+
+EXEC sp_rename N'[Adress].[StreeName]', N'ZipCode', N'COLUMN';
+
+GO
+
+EXEC sp_rename N'[Adress].[PostCode]', N'SecondLineAddress', N'COLUMN';
+
+GO
+
+EXEC sp_rename N'[Adress].[AdressDetail]', N'FirstLineAddress', N'COLUMN';
+
+GO
+
+ALTER TABLE [Adress] ADD [Country] nvarchar(max) NULL;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200211205616_changeAdressTable', N'2.2.6-servicing-10079');
+
+GO
+
+ALTER TABLE [AspNetUsers] ADD [Validity] bit NULL;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200212203640_addUserValidity', N'2.2.6-servicing-10079');
 
 GO
 
