@@ -241,3 +241,43 @@ GO
 * DATE : 16/02/2020 
 * Description : Add update trigger
 */
+
+
+/* 
+* DEBUT 
+* Author : ZLI
+* DATE : 18/02/2020 
+* Description : Add audit trigger
+*/
+IF EXISTS (SELECT * FROM   sys.objects WHERE  object_id = OBJECT_ID(N'[dbo].[fn_Audit_ListTableAuditedColumns]')
+                  AND type IN ( N'FN', N'IF', N'TF', N'FS', N'FT' ))
+BEGIN
+	DROP function [dbo].[fn_Audit_ListTableAuditedColumns]
+END
+GO
+
+CREATE FUNCTION [dbo].[fn_Audit_ListTableAuditedColumns]
+(	
+	@TableName NVARCHAR(MAX)
+)
+RETURNS @Tables TABLE (ColumnName NVARCHAR(256))
+AS
+BEGIN
+	INSERT INTO @Tables		
+	SELECT DISTINCT COLUMN_NAME
+	FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @TableName    
+	AND COLUMN_NAME NOT LIKE '%timestamp%'
+	AND COLUMN_NAME <> 'CreatedOn'
+	AND COLUMN_NAME <> 'UpdatedOn'
+	AND COLUMN_NAME <> 'CreatedBy'
+	AND COLUMN_NAME <> 'UpdatedBy'
+				
+	RETURN
+END
+GO
+/* 
+* END 
+* Author : ZLI
+* DATE : 18/02/2020 
+* Description : Add audit trigger
+*/

@@ -36,12 +36,12 @@ GO
 
 
 
-/**********************************************************************************
+/* *********************************************************************************
 * BEGIN 
 * Author : ZLI
 * DATE : 13/02/2020 
 * Description : 导入商品部分信息
-/**********************************************************************************/
+******************************************************************************** */
 IF NOT EXISTS (SELECT * FROM ReferenceItem)
 BEGIN
 IF OBJECT_ID('tempdb..#Product') IS NOT NULL 
@@ -2216,22 +2216,22 @@ where ri.ReferenceCategoryId = @Product
 END
 GO
 
-/**********************************************************************************
+/* *********************************************************************************
 * END 
 * Author : ZLI
 * DATE : 13/02/2020 
 * Description : 导入商品部分信息
-/**********************************************************************************/
+******************************************************************************** */
 
 
 
 
-/**********************************************************************************
+/* *********************************************************************************
 * BEGIN 
 * Author : ZLI
 * DATE : 13/02/2020 
 * Description : 加入三种权限
-/**********************************************************************************/
+******************************************************************************** */
   IF NOT EXISTS (SELECT * FROM [AspNetRoles] WHERE Name = 'Client')
   BEGIN 
 	  INSERT INTO [AspNetRoles] (Name,NormalizedName)
@@ -2255,9 +2255,82 @@ GO
   END
   GO
   
-/**********************************************************************************
+/* *********************************************************************************
 * END 
 * Author : ZLI
 * DATE : 13/02/2020 
 * Description : 加入三种权限
-/**********************************************************************************/
+******************************************************************************** */
+
+
+/* 
+* BEGIN 
+* Author : ZLI
+* DATE : 20/02/2020 
+* Description :  加入订单状态ri
+*/
+/*  Step1 : 加入订单状态rc */
+IF NOT EXISTS (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='OrderStatus')
+BEGIN
+	INSERT INTO ReferenceCategory (ShortLabel,Validity)
+	VALUES('OrderStatus',1)
+END
+GO
+/*  Step1 : 加入订单状态ri */
+DECLARE @OrderStatusCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='OrderStatus')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='OrderStatus_Valid')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('OrderStatus_Valid',@OrderStatusCategoryId ,1)
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='OrderStatus_Valid')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Validé','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'通过','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Valid','en')
+END
+GO
+
+DECLARE @OrderStatusCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='OrderStatus')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='OrderStatus_Refus')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('OrderStatus_Refus',@OrderStatusCategoryId ,1)
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='OrderStatus_Refus')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Refusé','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'拒绝','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Refuse','en')
+END
+GO
+
+
+DECLARE @OrderStatusCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='OrderStatus')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='OrderStatus_Progressing')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('OrderStatus_Progressing',@OrderStatusCategoryId ,1)
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='OrderStatus_Progressing')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'En cours','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'处理中','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Processing','en')
+END
+GO
+/* 
+* END 
+* Author : ZLI
+* DATE : 01/02/2020 
+* Description : 加入订单状态ri
+*/
