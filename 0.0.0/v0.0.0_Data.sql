@@ -2216,6 +2216,11 @@ where ri.ReferenceCategoryId = @Product
 END
 GO
 
+INSERT INTO Product(Price,QuantityPerBox,MinQuantity,ReferenceItemId)
+SELECT p.BasicPrice, 45, 60, ri.Id
+FROM ReferenceItem ri
+INNER JOIN #Product p ON p.Reference = ri.Code
+
 /* *********************************************************************************
 * END 
 * Author : ZLI
