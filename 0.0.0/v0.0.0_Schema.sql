@@ -235,6 +235,22 @@ CREATE TRIGGER [dbo].[tg_Sync_UserToken_InsUpd] ON [dbo].[UserToken]
 GO
 
 
+IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'[dbo].[tg_Sync_OrderProduct_InsUpd]')
+               AND [type] = 'TR')
+BEGIN
+      DROP TRIGGER [dbo].[tg_Sync_OrderProduct_InsUpd];
+END;
+GO
+CREATE TRIGGER [dbo].[tg_Sync_OrderProduct_InsUpd] ON [dbo].[OrderProduct]	
+		AFTER INSERT, UPDATE
+		AS
+	BEGIN
+		-- stamp current date for updated records
+		UPDATE [OrderProduct] SET
+			UpdatedOn = GETDATE() 
+		WHERE Id in (SELECT distinct Id FROM inserted);
+	END
+GO
 /* 
 * END 
 * Author : XCH
