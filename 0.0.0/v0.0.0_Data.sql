@@ -2339,3 +2339,31 @@ GO
 * DATE : 01/02/2020 
 * Description : 加入订单状态ri
 */
+
+/* 
+* START 
+* Author : ZLI
+* DATE : 07/03/2020 
+* Description : 加入默认税率
+*/
+/* Add tax rate rc */ 
+IF NOT EXISTS (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='TaxRate')
+BEGIN
+	INSERT INTO ReferenceCategory (ShortLabel,Validity)
+	VALUES('TaxRate',1)
+END
+GO
+/* Add default tax rate ri  */
+DECLARE @TaxRateCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='TaxRate')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='TaxRate_20%')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity,Value)
+	VALUES('TaxRate_20%',@TaxRateCategoryId ,1,'20')
+END
+GO
+/* 
+* END 
+* Author : ZLI
+* DATE : 07/03/2020 
+* Description : 加入默认税率
+*/
