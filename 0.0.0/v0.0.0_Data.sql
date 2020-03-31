@@ -2367,3 +2367,63 @@ GO
 * DATE : 07/03/2020 
 * Description : 加入默认税率
 */
+
+
+/* 
+* DEBUT 
+* Author : ZLI
+* DATE : 31/03/2020 
+* Description : 加入订单类型
+*/
+IF NOT EXISTS (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='OrderType')
+BEGIN
+	INSERT INTO ReferenceCategory (ShortLabel,Validity)
+	VALUES('OrderType',1)
+END
+GO
+
+DECLARE @OrderTypeCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='OrderType')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='OrderType_Internal')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('OrderType_Internal',@OrderTypeCategoryId ,1)
+
+	DECLARE @OrderType_InternalId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='OrderType_Internal')
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@OrderType_InternalId,'Order interne','fr')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@OrderType_InternalId,'Internal order','en')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@OrderType_InternalId,'内部订单','cn')
+END
+
+
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='OrderType_External')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('OrderType_External',@OrderTypeCategoryId ,1)
+
+
+	DECLARE @OrderType_ExternalId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='OrderType_External')
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@OrderType_ExternalId,'Order externe','fr')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@OrderType_ExternalId,'External order','en')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@OrderType_ExternalId,'客户订单','cn')
+END
+
+GO
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 31/03/2020 
+* Description : 加入订单类型
+*/
+
+
+
