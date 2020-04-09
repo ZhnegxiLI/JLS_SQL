@@ -2396,7 +2396,7 @@ BEGIN
 	VALUES (@OrderType_InternalId,'Internal order','en')
 
 	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
-	VALUES (@OrderType_InternalId,'内部订单','cn')
+	VALUES (@OrderType_InternalId,N'内部订单','cn')
 END
 
 
@@ -2414,7 +2414,7 @@ BEGIN
 	VALUES (@OrderType_ExternalId,'External order','en')
 
 	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
-	VALUES (@OrderType_ExternalId,'客户订单','cn')
+	VALUES (@OrderType_ExternalId,N'客户订单','cn')
 END
 
 GO
@@ -2425,5 +2425,62 @@ GO
 * Description : 加入订单类型
 */
 
+/* 
+* DEBUT 
+* Author : ZLI
+* DATE : 09/04/2020 
+* Description : 加入国家ri
+*/
+
+IF NOT EXISTS (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Country')
+BEGIN
+	INSERT INTO ReferenceCategory (ShortLabel,Validity)
+	VALUES('Country',1)
+END
+GO
+
+DECLARE @CountryCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Country')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='France')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('France',@CountryCategoryId ,1)
+
+	DECLARE @CountryId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='France')
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@CountryId,'France','fr')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@CountryId,'France','en')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@CountryId,N'法国','cn')
+END
+GO
+
+DECLARE @CountryCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Country')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='Spain')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('Spain',@CountryCategoryId ,1)
+
+	DECLARE @CountryId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='Spain')
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@CountryId,'Espagne','fr')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@CountryId,'Spqin','en')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@CountryId,N'西班牙','cn')
+END
+
+GO
+
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 09/04/2020 
+* Description : 加入国家ri
+*/
 
 
