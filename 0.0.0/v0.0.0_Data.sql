@@ -2484,3 +2484,40 @@ GO
 */
 
 
+/* 
+* DEBUT
+* Author : ZLI
+* DATE : 09/04/2020 
+* Description : 加入运费信息
+*/
+IF NOT EXISTS (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='InAppMessage')
+BEGIN
+	INSERT INTO ReferenceCategory (ShortLabel,Validity)
+	VALUES('InAppMessage',1)
+END
+GO
+
+DECLARE @InAppMessageCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='InAppMessage')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='ShippingMessage')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('ShippingMessage',@InAppMessageCategoryId ,1)
+
+	DECLARE @ShippingMessageId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='ShippingMessage')
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@ShippingMessageId,'Livraison gratuit pour le nord de la France à partir de 1500€HT, 2000€HT pour le sud de la France et 2500€HT pour les autres pays.','fr')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@ShippingMessageId,'Free delivery for the north of France from 1500 € HT, 2000 € HT for the south of France and 2500 € HT for the other countries.','en')
+
+	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
+	VALUES (@ShippingMessageId,N'法国北部免费送货，最低价格为1500€HT，法国南部为2000€HT，外国则为2500€HT','cn')
+END
+GO
+
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 09/04/2020 
+* Description : 加入运费信息
+*/
