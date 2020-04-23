@@ -558,7 +558,7 @@ VALUES (N'CreateNewOrder_Client',N'Confirmation de votre commande',N'Votre comma
 																						<br>
 																						Cordialement,<br>
 																						Service Clients JLS IMPORT<br>
-																						{WEBSITE}<br>
+																						{website}<br>
 																						<br>
 																						<br>
 																						Veuillez noter : ce message vous a été envoyé d''une adresse qui
@@ -1204,7 +1204,7 @@ VALUES (N'CreateNewOrder_Admin',N'Confirmation de la commande',N'La commande {nu
 																					<h3
 																						style="color:#5F5F5F;line-height:125%;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:normal;margin-top:0;margin-bottom:3px;text-align:left;">
 																						Vous avez reçu une nouvelle
-																						commande {numero de commande},
+																						commande {numerodecommande},
 																						merci de traiter dans un
 																						meilleur delais
 
@@ -1865,7 +1865,7 @@ VALUES (N'UpdateOrder_Client',N'Confirmation de modifier votre commande',N'Votre
 																						<br>
 																						Cordialement,<br>
 																						Service Clients JLS IMPORT<br>
-																						{WEBSITE}<br>
+																						{website}<br>
 																						<br>
 																						<br>
 																						Veuillez noter : ce message vous
@@ -3302,7 +3302,7 @@ VALUES (N'ResetPassword',N'Réinitialiser le mot de passe',N'Confirmer de réini
 																		<br>
 																		
 																		Merci d''avoir choisir JLS IMPORT.<br>
-																		{WEBSITE}<br>
+																		{website}<br>
 																		Veuillez noter : ce message vous a été envoyé d''une adresse qui ne peut recevoir d''e-mails. Merci de ne pas y répondre.
 																	</div>
 																</td>
@@ -3953,7 +3953,7 @@ VALUES (N'EmailConfirmation',N'Activer votre compte',N'Activer votre compte',N'<
 																						Cher client（s）/Chère cliente（s）:<br>
 																						Votre compte sur notre
 																						application et notre website:<br>
-																						{Email}<br>
+																						{email}<br>
 																						Veuiller cliquer le boutton pour
 																						activer votre compten</h3>
 
@@ -4838,7 +4838,7 @@ VALUES (N'AfterResetPassword',N'Votre nouveau mot de passe est pris en compte',N
 																		<br>
 																		
 																		Merci d''avoir choisir JLS IMPORT.<br>
-																		{WEBSITE}<br>
+																		{website}<br>
 																		Veuillez noter : ce message vous a été envoyé d''une adresse qui ne peut recevoir d''e-mails. Merci de ne pas y répondre.
 																	</div>
 																</td>
@@ -5575,7 +5575,7 @@ VALUES (N'AfterEmailConfirmation',N'Votre compte est déjà activé',N'Votre com
 																		<br>
 																		
 																		Merci d''avoir choisir JLS IMPORT.<br>
-																		{WEBSITE}<br>
+																		{website}<br>
 																		Veuillez noter : ce message vous a été envoyé d''une adresse qui ne peut recevoir d''e-mails. Merci de ne pas y répondre.
 																	</div>
 																</td>
