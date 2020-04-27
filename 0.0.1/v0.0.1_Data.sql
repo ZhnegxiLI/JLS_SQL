@@ -431,12 +431,7 @@ VALUES (N'CreateNewOrder_Client',N'Confirmation de votre commande',N'Votre comma
 																		width="100%" style="max-width:100%;">
 																		<tr>
 																			<td align="left" class="textContent">
-																				<div
-																					style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-																					The introduction of your message
-																					preview goes here. Try to make it
-																					short.
-																				</div>
+																			
 																			</td>
 																		</tr>
 																	</table>
@@ -1090,12 +1085,7 @@ VALUES (N'CreateNewOrder_Admin',N'Confirmation de la commande',N'La commande {nu
 																		width="100%" style="max-width:100%;">
 																		<tr>
 																			<td align="left" class="textContent">
-																				<div
-																					style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-																					The introduction of your message
-																					preview goes here. Try to make it
-																					short.
-																				</div>
+																			
 																			</td>
 																		</tr>
 																	</table>
@@ -1733,12 +1723,7 @@ VALUES (N'UpdateOrder_Client',N'Confirmation de modifier votre commande',N'Votre
 																		width="100%" style="max-width:100%;">
 																		<tr>
 																			<td align="left" class="textContent">
-																				<div
-																					style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-																					The introduction of your message
-																					preview goes here. Try to make it
-																					short.
-																				</div>
+																			
 																			</td>
 																		</tr>
 																	</table>
@@ -2401,12 +2386,7 @@ VALUES (N'UpdateOrder_Admin',N'Confirmation de modifier la commande',N'La comman
 																		width="100%" style="max-width:100%;">
 																		<tr>
 																			<td align="left" class="textContent">
-																				<div
-																					style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-																					The introduction of your message
-																					preview goes here. Try to make it
-																					short.
-																				</div>
+																			
 																			</td>
 																		</tr>
 																	</table>
@@ -3045,12 +3025,7 @@ VALUES (N'ResetPassword',N'Réinitialiser le mot de passe',N'Confirmer de réini
 																		width="100%" style="max-width:100%;">
 																		<tr>
 																			<td align="left" class="textContent">
-																				<div
-																					style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-																					The introduction of your message
-																					preview goes here. Try to make it
-																					short.
-																				</div>
+																		
 																			</td>
 																		</tr>
 																	</table>
@@ -3830,12 +3805,7 @@ VALUES (N'EmailConfirmation',N'Activer votre compte',N'Activer votre compte',N'<
 																		width="100%" style="max-width:100%;">
 																		<tr>
 																			<td align="left" class="textContent">
-																				<div
-																					style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-																					The introduction of your message
-																					preview goes here. Try to make it
-																					short.
-																				</div>
+																		
 																			</td>
 																		</tr>
 																	</table>
@@ -4626,12 +4596,7 @@ VALUES (N'AfterResetPassword',N'Votre nouveau mot de passe est pris en compte',N
 																		width="100%" style="max-width:100%;">
 																		<tr>
 																			<td align="left" class="textContent">
-																				<div
-																					style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-																					The introduction of your message
-																					preview goes here. Try to make it
-																					short.
-																				</div>
+																			
 																			</td>
 																		</tr>
 																	</table>
@@ -5363,12 +5328,7 @@ VALUES (N'AfterEmailConfirmation',N'Votre compte est déjà activé',N'Votre com
 																		width="100%" style="max-width:100%;">
 																		<tr>
 																			<td align="left" class="textContent">
-																				<div
-																					style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-																					The introduction of your message
-																					preview goes here. Try to make it
-																					short.
-																				</div>
+																				
 																			</td>
 																		</tr>
 																	</table>
