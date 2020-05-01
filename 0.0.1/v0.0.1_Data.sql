@@ -5638,3 +5638,115 @@ GO
 * DATE : 22/04/2020 
 * Description : email template
 */
+
+
+/* 
+* DEBUT 
+* Author : ZLI
+* DATE : 28/04/2020 
+* Description : StoreInfo
+*/
+IF NOT EXISTS (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='StoreInfomation')
+BEGIN
+	INSERT INTO ReferenceCategory (ShortLabel,Validity)
+	VALUES('StoreInfomation',1)
+END
+GO
+
+DECLARE @StoreInfoCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='StoreInfomation')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Address')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('StoreInfo_Address',@StoreInfoCategoryId ,1)
+
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Address')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'58 rue du Goulet 93300 Aubervilliers','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'58 rue du Goulet 93300 Aubervilliers','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'58 rue du Goulet 93300 Aubervilliers','en')
+END
+GO
+
+DECLARE @StoreInfoCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='StoreInfomation')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Telephone')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('StoreInfo_Telephone',@StoreInfoCategoryId ,1)
+
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Telephone')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'+33 (0)1 48 33 58 09','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'+33 (0)1 48 33 58 09','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'+33 (0)1 48 33 58 09','en')
+END
+GO
+
+
+
+DECLARE @StoreInfoCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='StoreInfomation')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Email')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('StoreInfo_Email',@StoreInfoCategoryId ,1)
+
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Email')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'jlsimport@gmail.com','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'jlsimport@gmail.com','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'jlsimport@gmail.com','en')
+END
+GO
+
+DECLARE @StoreInfoCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='StoreInfomation')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Fax')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('StoreInfo_Fax',@StoreInfoCategoryId ,1)
+
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Fax')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'+33 (0)1 48 33 72 06','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'+33 (0)1 48 33 72 06','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'+33 (0)1 48 33 72 06','en')
+END
+GO
+
+DECLARE @StoreInfoCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='StoreInfomation')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Hour')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity)
+	VALUES('StoreInfo_Hour',@StoreInfoCategoryId ,1)
+
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Hour')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Du lundi au vendredi de 9h00 à 18h30.','fr') -- todo change
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'周一至周五 9h00 - 18h30','cn') -- todo change
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Monday to Friday 10:00am - 6:30pm','en')
+END
+GO
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 28/04/2020 
+* Description : StoreInfo
+*/
