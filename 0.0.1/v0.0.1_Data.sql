@@ -5750,3 +5750,138 @@ GO
 * DATE : 28/04/2020 
 * Description : StoreInfo
 */
+
+
+/* 
+* DEBUT 
+* Author : ZLI
+* DATE : 01/05/2020 
+* Description : Insert year and month
+*/
+
+IF NOT EXISTS (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Year')
+BEGIN
+	INSERT INTO ReferenceCategory (ShortLabel,Validity)
+	VALUES('Year',1)
+END
+GO
+
+DECLARE @YearCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Year')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='2020')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity, Value)
+	VALUES('2020',@YearCategoryId ,1, 2020)
+END
+GO
+
+IF NOT EXISTS (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Month')
+BEGIN
+	INSERT INTO ReferenceCategory (ShortLabel,Validity)
+	VALUES('Month',1)
+END
+GO
+
+DECLARE @MonthCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Month')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='Month_Jan')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity, Value)
+	VALUES('Month_Jan',@MonthCategoryId ,1,1)
+
+	
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='Month_Jan')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Janvier','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'一月','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'January','en')
+END
+GO
+DECLARE @MonthCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Month')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='Month_Feb')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity, Value)
+	VALUES('Month_Feb',@MonthCategoryId ,1,2)
+
+	
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='Month_Feb')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Févier','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'二月','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Feburay','en')
+END
+GO
+
+DECLARE @MonthCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Month')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='Month_Mar')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity, Value)
+	VALUES('Month_Mar',@MonthCategoryId ,1, 3)
+
+	
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='Month_Mar')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Mars','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'三月','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'March','en')
+END
+GO
+
+
+DECLARE @MonthCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Month')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='Month_Avr')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity, Value)
+	VALUES('Month_Avr',@MonthCategoryId ,1,4)
+
+	
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='Month_Avr')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Avril','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'四月','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'April','en')
+END
+GO
+
+
+DECLARE @MonthCategoryId BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel ='Month')
+IF NOT EXISTS (SELECT Id FROM ReferenceItem WHERE Code ='Month_May')
+BEGIN
+	INSERT INTO ReferenceItem(code, ReferenceCategoryId,Validity, Value)
+	VALUES('Month_May',@MonthCategoryId ,1 ,5)
+
+	
+	DECLARE @ReferenceValidId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='Month_May')
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'Mai','fr')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'五月','cn')
+
+	INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang)
+	VALUES(@ReferenceValidId,N'May','en')
+END
+GO
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 01/05/2020 
+* Description : Insert year and month
+*/
+
+
+
