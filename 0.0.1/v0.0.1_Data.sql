@@ -3180,7 +3180,7 @@ VALUES (N'ResetPassword',N'Réinitialiser le mot de passe',N'Confirmer de réini
 																<td align="center" valign="middle" class="buttonContent"
 																	style="padding-top:15px;padding-bottom:15px;padding-right:15px;padding-left:15px;">
 																	<a style="color:#FFFFFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:135%;"
-																		href="#" target="_blank">Modifiez votre mot de passe</a>
+																		href="{Link}" >Modifiez votre mot de passe</a>
 																</td>
 															</tr>
 														</table>
@@ -3969,7 +3969,7 @@ VALUES (N'EmailConfirmation',N'Activer votre compte',N'Activer votre compte',N'<
 																<td align="center" valign="middle" class="buttonContent"
 																	style="padding-top:15px;padding-bottom:15px;padding-right:15px;padding-left:15px;">
 																	<a style="color:#FFFFFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:135%;"
-																		href="#" target="_blank">Activer votre address
+																		href="{Link}" target="_blank">Activer votre address
 																		email</a>
 																</td>
 															</tr>
