@@ -309,13 +309,13 @@ BEGIN
 
 	DECLARE @ShippingMessageId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='ShippingMessage')
 	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
-	VALUES (@ShippingMessageId,'Livraison gratuit pour le nord de la France à partir de 1500€HT, 2000€HT pour le sud de la France et 2500€HT pour les autres pays.','fr')
+	VALUES (@ShippingMessageId,'Livraison gratuit pour le nord de la France à partir de 1500€HT,<br> 2000€HT pour le sud de la France <br> 2500€HT pour les autres pays.','fr')
 
 	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
-	VALUES (@ShippingMessageId,'Free delivery for the north of France from 1500 € HT, 2000 € HT for the south of France and 2500 € HT for the other countries.','en')
+	VALUES (@ShippingMessageId,'Free delivery for the north of France from 1500 € HT,<br> 2000 € HT for the south of France <br> 2500 € HT for the other countries.','en')
 
 	INSERT INTO ReferenceLabel (ReferenceItemId,Label,Lang)
-	VALUES (@ShippingMessageId,N'法国北部免费送货，最低价格为1500€HT，法国南部为2000€HT，外国则为2500€HT','cn')
+	VALUES (@ShippingMessageId,N'法国北部免费送货，最低价格为1500€HT<br> 法国南部为2000€HT<br>外国则为2500€HT','cn')
 END
 GO
 
@@ -324,4 +324,72 @@ GO
 * Author : ZLI
 * DATE : 09/04/2020 
 * Description : 加入运费信息
+*/
+
+/* 
+* DEBUT
+* Author : ZLI
+* DATE : 27/09/2020 
+* Description : 修改运费信息
+*/
+
+  
+DECLARE @ShippingMessageId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='ShippingMessage')
+IF  @ShippingMessageId IS NOT NULL
+BEGIN
+
+	UPDATE ReferenceLabel
+	SET Label = 'Livraison gratuit pour le nord de la France à partir de 1500€HT<br><br> 2000€HT pour le sud de la France <br><br> 2500€HT pour les autres pays'
+	WHERE Lang = 'fr' AND ReferenceItemId = @ShippingMessageId
+
+
+	UPDATE ReferenceLabel
+	SET Label = 'Free delivery for the north of France from 1500 € HT <br><br> 2000 € HT for the south of France <br><br> 2500 € HT for the other countries'
+	WHERE Lang = 'en' AND ReferenceItemId = @ShippingMessageId
+
+
+	UPDATE ReferenceLabel
+	SET Label = '法国北部免费送货，最低价格为1500€HT<br><br>法国南部为2000€HT<br><br>外国则为2500€HT'
+	WHERE Lang = 'cn' AND ReferenceItemId = @ShippingMessageId
+END
+GO
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 27/09/2020 
+* Description : 修改运费信息
+*/
+
+
+/* 
+* DEBUT 
+* Author : ZLI
+* DATE : 27/09/2020 
+* Description : 修改邮箱
+*/
+DECLARE @StoreInfo_EmailId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Email')
+IF  @StoreInfo_EmailId IS NOT NULL
+BEGIN
+
+	UPDATE ReferenceLabel
+	SET Label = 'jlsimport93@gmail.com'
+	WHERE Lang = 'fr' AND ReferenceItemId = @StoreInfo_EmailId
+
+
+	UPDATE ReferenceLabel
+	SET Label = 'jlsimport93@gmail.com'
+	WHERE Lang = 'en' AND ReferenceItemId = @StoreInfo_EmailId
+
+
+	UPDATE ReferenceLabel
+	SET Label = 'jlsimport93@gmail.com'
+	WHERE Lang = 'cn' AND ReferenceItemId = @StoreInfo_EmailId
+END
+GO
+
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 27/09/2020 
+* Description : 修改邮箱
 */
