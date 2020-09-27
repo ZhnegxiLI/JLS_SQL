@@ -46,6 +46,8 @@ delete ShipmentInfo
 
 delete UserShippingAdress
 
+delete Adress
+
 delete au
 FROM AspNetUsers au
 INNER JOIN #User u on au.Id = u.UserId
