@@ -332,14 +332,12 @@ GO
 * DATE : 27/09/2020 
 * Description : 修改运费信息
 */
-
-  
 DECLARE @ShippingMessageId BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='ShippingMessage')
 IF  @ShippingMessageId IS NOT NULL
 BEGIN
 
 	UPDATE ReferenceLabel
-	SET Label = 'Livraison gratuit pour le nord de la France à partir de 1500€HT<br><br> 2000€HT pour le sud de la France <br><br> 2500€HT pour les autres pays'
+	SET Label = 'Franco de port：1500€HT pour le nord de la France<br><br> 2000€HT pour le sud de la France <br><br> 2500€HT pour les pays étangers'
 	WHERE Lang = 'fr' AND ReferenceItemId = @ShippingMessageId
 
 
