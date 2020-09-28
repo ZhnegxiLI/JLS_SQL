@@ -347,7 +347,7 @@ BEGIN
 
 
 	UPDATE ReferenceLabel
-	SET Label = '法国北部免费送货，最低价格为1500€HT<br><br>法国南部为2000€HT<br><br>外国则为2500€HT'
+	SET Label = N'法国北部免费送货，最低价格为1500€HT<br><br>法国南部为2000€HT<br><br>外国则为2500€HT'
 	WHERE Lang = 'cn' AND ReferenceItemId = @ShippingMessageId
 END
 GO
