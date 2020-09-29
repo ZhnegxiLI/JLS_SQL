@@ -391,3 +391,37 @@ GO
 * DATE : 27/09/2020 
 * Description : 修改邮箱
 */
+
+
+/* 
+* DEBUT 
+* Author : ZLI
+* DATE : 29/09/2020 
+* Description : 修改营业
+*/
+DECLARE @HourInfo BIGINT = (SELECT Id FROM ReferenceItem WHERE Code ='StoreInfo_Hour')
+IF  @HourInfo IS NOT NULL
+BEGIN
+
+	UPDATE ReferenceLabel
+	SET Label = 'Du lundi au vendredi de 9h00 à 18h30 et le samedi de 14h à 18h30'
+	WHERE Lang = 'fr' AND ReferenceItemId = @HourInfo
+
+
+	UPDATE ReferenceLabel
+	SET Label = 'Monday to Friday 10:00am - 6:30pm and saturday 14h00 - 18h30'
+	WHERE Lang = 'en' AND ReferenceItemId = @HourInfo
+
+
+	UPDATE ReferenceLabel
+	SET Label = '周一至周五 9h00 - 18h30 周六 14h00 - 18h30'
+	WHERE Lang = 'cn' AND ReferenceItemId = @HourInfo
+END
+GO
+
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 29/09/2020 
+* Description : 修改营业
+*/
