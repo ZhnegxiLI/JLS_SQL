@@ -337,7 +337,7 @@ IF  @ShippingMessageId IS NOT NULL
 BEGIN
 
 	UPDATE ReferenceLabel
-	SET Label = 'Franco de port：1500€HT pour le nord de la France<br><br> 2000€HT pour le sud de la France <br><br> 2500€HT pour les pays étangers'
+	SET Label = 'Franco de port：<br>1500€HT pour le nord de la France<br><br> 2000€HT pour le sud de la France <br><br> 2500€HT pour les pays étangers'
 	WHERE Lang = 'fr' AND ReferenceItemId = @ShippingMessageId
 
 
