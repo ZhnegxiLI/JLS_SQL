@@ -425,3 +425,67 @@ GO
 * DATE : 29/09/2020 
 * Description : 修改营业
 */
+
+/* 
+* BEGIN 
+* Author : ZLI
+* DATE : 10/10/2020 
+* Description : Export product format
+*/
+
+IF NOT EXISTS (SELECT * FROM [ExportConfiguration] WHERE ExportName = 'AdvancedProductSearchByCriteria')
+BEGIN
+  INSERT INTO [ExportConfiguration] (ExportName, ExportModel)
+  VALUES('AdvancedProductSearchByCriteria','  [
+	{
+	"Name": "MainCategoryLabel",
+	"DisplayName": "Catégory",
+	"Order" : 1
+	},{
+	"Name": "SecondCategoryLabel",
+	"DisplayName": "Sous Catégory",
+	"Order" : 2
+	},{
+	"Name": "Code",
+	"DisplayName": "Référence",
+	"Order" : 3
+	},{
+	"Name": "Label",
+	"DisplayName": "Nom du produit",
+	"Order" : 4
+	},{
+	"Name": "Price",
+	"DisplayName": "PU HT",
+	"Order" : 5
+	},{
+	"Name": "BarreCode",
+	"DisplayName": "Code barre",
+	"Order" : 6
+	},{
+	"Name": "QuantityPerBox",
+	"DisplayName": "Colissage",
+	"Order" : 7
+	},{
+	"Name": "Color",
+	"DisplayName": "Couleur",
+	"Order" : 8
+	},
+	{
+	"Name": "Material",
+	"DisplayName": "Matériel",
+	"Order" : 9
+	},
+	{
+	"Name": "Size",
+	"DisplayName": "Taille",
+	"Order" : 10
+	}
+]')
+END
+GO
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 10/10/2020 
+* Description : Export product format
+*/
