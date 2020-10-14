@@ -489,3 +489,30 @@ GO
 * DATE : 10/10/2020 
 * Description : Export product format
 */
+
+
+/* 
+* DEBUT 
+* Author : ZLI
+* DATE : 10/10/2020 
+* Description : Import slides
+*/
+IF NOT EXISTS (SELECT * FROM WebsiteSlide)
+BEGIN
+	INSERT INTO WebsiteSlide(PhotoPath)
+	VALUES('Images\\slides\\slider1.jpg')
+
+	INSERT INTO WebsiteSlide(PhotoPath)
+	VALUES('Images\\slides\\slider2.jpg')
+
+	INSERT INTO WebsiteSlide(PhotoPath)
+	VALUES('Images\\slides\\slider3.jpg')
+
+END
+GO
+/* 
+* FIN 
+* Author : ZLI
+* DATE : 10/10/2020 
+* Description : Import slides
+*/
