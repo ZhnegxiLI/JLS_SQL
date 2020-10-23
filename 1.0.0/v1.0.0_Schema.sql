@@ -36,3 +36,35 @@ GO
 * DATE : 11/10/2020 
 * Description : Trigger of previous price in product table
 */
+
+
+
+/* 
+* BEGIN 
+* Author : ZLI
+* DATE : 24/10/2020 
+* Description : Trigger of fix minQuantity = 1
+*/
+IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'[dbo].[tg_Sync_Product_MinQuantityUpd]')
+               AND [type] = 'TR')
+BEGIN
+      DROP TRIGGER [dbo].[tg_Sync_Product_MinQuantityUpd];
+END;
+GO
+CREATE TRIGGER [dbo].[tg_Sync_Product_MinQuantityUpd] ON [dbo].[Product]	
+		AFTER UPDATE
+		AS
+	BEGIN
+
+		UPDATE p 
+		SET p.MinQuantity = 1
+		FROM [Product] p
+
+	END
+GO
+/* 
+* END 
+* Author : ZLI
+* DATE : 24/10/2020 
+* Description : Trigger of fix minQuantity = 1
+*/
