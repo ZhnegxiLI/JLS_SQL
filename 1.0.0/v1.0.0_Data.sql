@@ -516,3 +516,12 @@ GO
 * DATE : 10/10/2020 
 * Description : Import slides
 */
+
+
+IF EXISTS (SELECT * FROM EmailTemplate WHERE Name = 'CreateNewOrder_Client')
+BEGIN
+	UPDATE EmailTemplate
+	SET MessageBody = 'Votre commande {numerodecommande} est bien passée'
+	WHERE Name = 'CreateNewOrder_Client'
+END
+GO
