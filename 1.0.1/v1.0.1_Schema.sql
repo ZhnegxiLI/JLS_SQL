@@ -34,3 +34,56 @@ GO
 * Description : Create fn_CheckNewProduct function
 */
 
+IF EXISTS ( SELECT  *
+            FROM    sys.objects
+            WHERE   object_id = OBJECT_ID(N'SP_WidgetBestClient')
+                    AND type IN ( N'P', N'PC' ) ) 
+BEGIN
+    DROP PROCEDURE [dbo].[SP_WidgetBestClient]
+END
+GO
+
+CREATE PROCEDURE SP_WidgetBestClient
+AS
+BEGIN
+	DROP TABLE IF EXISTS #tempResult
+	CREATE TABLE #tempResult(UserId BIGINT,EntrepriseName NVARCHAR(255), ClientEmail NVARCHAR(255), TotalConsumationHT DECIMAL(18,2), LastPurchaseDate DATE, LastPurchaseAmount DECIMAL(18,2))
+
+	DECLARE @ExternalOrderId BIGINT = (SELECT TOP 1 ID FROM ReferenceItem WHERE Code = 'OrderType_External')
+
+	INSERT INTO #tempResult(UserId,EntrepriseName, ClientEmail, TotalConsumationHT)
+	SELECT  U.Id, U.EntrepriseName, U.Email, SUM(O.TotalPriceHT)
+	FROM OrderInfo O
+	INNER JOIN AspNetUsers U ON O.UserId = U.Id
+	WHERE O.OrderTypeId  = @ExternalOrderId
+	GROUP BY U.Email, U.EntrepriseName, U.Id
+	ORDER BY SUM(O.TotalPriceHT) DESC
+
+	DROP TABLE IF EXISTS #tempLastPurchaseResult
+	CREATE TABLE #tempLastPurchaseResult(UserId BIGINT, LastPurchaseOrderId BIGINT, LastPurchaseDate DATE, LastPurchaseAmount DECIMAL(18,2))
+
+	INSERT INTO #tempLastPurchaseResult(UserId, LastPurchaseOrderId, LastPurchaseDate, LastPurchaseAmount)
+	SELECT R.UserId, O.Id, O.CreatedOn, O.TotalPriceHT
+	FROM #tempResult R
+	INNER JOIN OrderInfo O ON  R.UserId  = O.UserId
+	GROUP BY R.UserId, O.Id, O.CreatedOn, O.TotalPriceHT
+	ORDER BY O.CreatedOn DESC
+
+
+	UPDATE R
+	SET R.LastPurchaseAmount = PR.LastPurchaseAmount, R.LastPurchaseDate = PR.LastPurchaseDate
+	FROM #tempResult R
+	INNER JOIN #tempLastPurchaseResult PR ON R.UserId = PR.UserId
+
+
+	SELECT * FROM #tempResult order by TotalConsumationHT desc
+
+	--INSERT INTO #tempResult(EntrepriseName, ClientEmail, TotalConsumationHT)
+	--SELECT TOP 20 C.EntrepriseName, C.Email, SUM(O.TotalPriceHT)
+	--FROM OrderInfo O
+	--INNER JOIN CustomerInfo C ON O.CustomerId = C.Id
+	--GROUP BY C.EntrepriseName, C.Email
+	--ORDER BY SUM(O.TotalPriceHT)
+	
+END
+GO
