@@ -113,3 +113,53 @@ GO
 * DATE : 31/12/2020 
 * Description : 加入新订单状态
 */
+
+/* 
+* BEGIN 
+* Author : ZLI
+* DATE : 24/01/2021 
+* Description : Update customerinfo
+*/
+IF EXISTS (SELECT COUNT(Id) FROM CustomerInfo GROUP BY Email, EntrepriseName, PhoneNumber HAVING COUNT(Id)>1)
+BEGIN
+	IF OBJECT_ID('tempdb..#tmpNewCustomer') IS NOT NULL DROP TABLE #tmpNewCustomer
+	CREATE TABLE #tmpNewCustomer (Id BIGINT, Email nvarchar(400), EntrepriseName nvarchar(400), PhoneNumber nvarchar(400))
+	INSERT INTO #tmpNewCustomer(Email, EntrepriseName, PhoneNumber)
+	SELECT Email, EntrepriseName, PhoneNumber
+	FROM [CustomerInfo]
+	GROUP BY Email, EntrepriseName, PhoneNumber
+
+	UPDATE TC
+	SET Id = C.Id
+	FROM #tmpNewCustomer TC
+	INNER JOIN CustomerInfo C ON TC.Email = TC.Email COLLATE database_default and C.EntrepriseName = TC.EntrepriseName COLLATE database_default and C.PhoneNumber = TC.PhoneNumber COLLATE database_default
+
+
+	IF OBJECT_ID('tempdb..#tmpOrder') IS NOT NULL DROP TABLE #tmpOrder
+	CREATE TABLE #tmpOrder(Id bigint, PreviousCustomerId bigint, NewCustomerId bigint)
+	INSERT INTO #tmpOrder(Id, PreviousCustomerId, NewCustomerId)
+	SELECT DISTINCT O.Id, o.CustomerId, TC.Id
+	FROM OrderInfo O
+	inner join CustomerInfo C on O.CustomerId = C.Id
+	INNER JOIN #tmpNewCustomer TC ON TC.Email = TC.Email COLLATE database_default and C.EntrepriseName = TC.EntrepriseName COLLATE database_default and C.PhoneNumber = TC.PhoneNumber COLLATE database_default
+
+	DELETE #tmpOrder
+	where PreviousCustomerId = NewCustomerId
+
+	UPDATE O
+	SET O.CustomerId = T.NewCustomerId
+	FROM OrderInfo O 
+	INNER JOIN #tmpOrder T ON O.Id = T.Id
+
+	DELETE C
+	FROM CustomerInfo C 
+	LEFT JOIN OrderInfo O ON C.Id = O.CustomerId
+	WHERE O.Id is null
+END
+GO
+/* 
+* END 
+* Author : ZLI
+* DATE : 24/01/2021 
+* Description : Update customerinfo
+*/
