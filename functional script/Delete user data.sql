@@ -36,7 +36,7 @@ SELECT U.Id
 FROM [AspNetUsers] U
 INNER JOIN AspNetUserRoles AUR ON U.Id = AUR.UserId
 INNER JOIN AspNetRoles AR ON AUR.RoleId = AR.Id
-WHERE AR.Name = 'Client'
+--WHERE AR.Name = 'Client'
 
 delete aur 
 FROM AspNetUserRoles aur  
@@ -51,5 +51,8 @@ delete Adress
 delete au
 FROM AspNetUsers au
 INNER JOIN #User u on au.Id = u.UserId
+
+delete VisitorCounter
+delete [TokenModel]
 
 
