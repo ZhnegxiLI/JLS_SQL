@@ -87,3 +87,24 @@ BEGIN
 	
 END
 GO
+
+
+
+IF NOT EXISTS (SELECT * FROM __EFMigrationsHistory WHERE [MigrationId] ='20210311182524_addIsDefaultInPhotoPath')
+BEGIN
+	ALTER TABLE [ProductPhotoPath] ADD [IsDefault] bit NULL;
+	INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+	VALUES (N'20210311182524_addIsDefaultInPhotoPath', N'2.2.6-servicing-10079');
+END
+GO
+
+
+
+IF NOT EXISTS (SELECT * FROM __EFMigrationsHistory WHERE [MigrationId] ='20210322193630_AddQuantityPerParcel')
+BEGIN
+	ALTER TABLE [Product] ADD [QuantityPerParecel] int NULL;
+
+	INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+	VALUES (N'20210322193630_AddQuantityPerParcel', N'2.2.6-servicing-10079');
+END
+GO
