@@ -123,3 +123,12 @@ IF NOT EXISTS (SELECT * FROM SYSOBJECTS WHERE NAME='Historization_ImportProduct'
 		) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
+
+
+IF NOT EXISTS (SELECT * FROM __EFMigrationsHistory WHERE [MigrationId] ='20210322193630_AddQuantityPerParcel')
+BEGIN
+	ALTER TABLE [Product] ADD [QuantityPerParcel] int NULL;
+	INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+	VALUES (N'20210322193630_AddQuantityPerParcel', N'2.2.6-servicing-10079');
+END
+GO

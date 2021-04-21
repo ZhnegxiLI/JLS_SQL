@@ -19,7 +19,7 @@ CREATE TABLE #Product(
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'BAZAR', N'OUTIL', N'42005', N'TOILE CIREE BP 1.37*20M', 2, 35, 70, N'1.37*20M', N'5 COULEURS ASSORTIES', NULL, NULL)
 
-INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISELLE/ETAGERE', N'037278', N'PROTEGE TABLE 140CMX20M', 1, 95, 95, N'140CMX20M', N'8 COULEURS ASSORTIES', NULL, NULL)
+INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISSELLE/ETAGERE', N'037278', N'PROTEGE TABLE 140CMX20M', 1, 95, 95, N'140CMX20M', N'8 COULEURS ASSORTIES', NULL, NULL)
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'BAZAR', N'OUTIL', N'41485', N'ROULEAU ANTI-DERAPANT 65*100CM 900G', 12, 2.3, 27.6, N'65*100CM 900G', N'4 COULEURS ASSORTIES', NULL, NULL)
 
@@ -311,7 +311,7 @@ INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'BAZAR', N'COLLE/RUBAN/SCOTCH', N'240690', N'SILICONE BLANCHE 280ML', 12, 2, 24, N'280ML', NULL, NULL, NULL)
 
-INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISELLE/ETAGERE', N'1195112', N'EGOUTTOIR A COUVERT', 6, 1.1, 6.6, NULL, NULL, NULL, NULL)
+INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISSELLE/ETAGERE', N'1195112', N'EGOUTTOIR A COUVERT', 6, 1.1, 6.6, NULL, NULL, NULL, NULL)
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'ARTICLE DE MENAGE', N'ARTICLE SALLE DE BAIN/ETAGERE', N'1154334', N'PORTE EPONGE DISTRIBUTEUR DE SAVON', 6, 1.85, 11.1, NULL, NULL, NULL, NULL)
 
@@ -329,7 +329,7 @@ INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'COUVERTS DE MENAGERE', N'7102', N'SET DE TABLE 40*30CM', 120, 0.35, 42, N'40*30CM', N'8 COULEURS ASSORTIES', NULL, NULL)
 
-INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'THEIERRE', N'87174', N'THEIERRE METAL', 24, 2.5, 60, NULL, NULL, NULL, NULL)
+INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'THEIERE', N'87174', N'THEIERE METAL', 24, 2.5, 60, NULL, NULL, NULL, NULL)
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'BOL/ASSIETTE/SALADIER', N'41399', N'COUPE A FRUIT 24*11CM', 60, 1.2, 72, N' 24*11CM', NULL, NULL, NULL)
 
@@ -459,7 +459,7 @@ INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'ARTICLE DE MENAGE', N'DESODORISANT/SPRAY ', N'218555', N'DESODORISANT PIN 300ML', 12, 0.6, 7.2, N'300ML', NULL, NULL, NULL)
 
-INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISELLE/ETAGERE', N'40891', N'CORBEILLE A FRUIT', 24, 1.95, 46.8, NULL, NULL, NULL, NULL)
+INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISSELLE/ETAGERE', N'40891', N'CORBEILLE A FRUIT', 24, 1.95, 46.8, NULL, NULL, NULL, NULL)
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'DECORATION', N'PAPIER PEINT/PROTEGE/NAPPE', N'41389', N'ROULEAU ADHESIF', 60, 0.65, 39, NULL, N'3 COULEURS ASSORTIES', NULL, NULL)
 
@@ -685,9 +685,9 @@ INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'CADEAU', N'SAC', N'41223', N'SAC CADEAU 30*12*40CM', 72, 0.75, 54, N'30*12*40CM', N'2 COULEURS ASSORTIES', NULL, NULL)
 
-INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISELLE/ETAGERE', N'071212', N'ETAGERE A LEGUME OVALE PLASTIQUE X4', 6, 8.5, 51, NULL, NULL, NULL, NULL)
+INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISSELLE/ETAGERE', N'071212', N'ETAGERE A LEGUME OVALE PLASTIQUE X4', 6, 8.5, 51, NULL, NULL, NULL, NULL)
 
-INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISELLE/ETAGERE', N'071200', N'ETAGERE A LEGUME RECTANGULAIRE X4', 6, 8.5, 51, NULL, NULL, NULL, NULL)
+INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'VAISSELLE', N'EGOUTTOIR VAISSELLE/ETAGERE', N'071200', N'ETAGERE A LEGUME RECTANGULAIRE X4', 6, 8.5, 51, NULL, NULL, NULL, NULL)
 
 INSERT #Product ([MainCategory], [SecondCategory], [REFERENCE], [NOM], [COLISAGE], [Price], [pv ht/colis], [TAILLE], [COULEUR], [MATIERE], [Forme]) VALUES (N'DECORATION', N'PAPIER PEINT/PROTEGE/NAPPE', N'41589', N'ROULEAU ANTI-DERAPANT 65CM*15M 900G', 1, 30, 30, N'65CM*15M ', N'4 COULEURS ASSORTIES', NULL, NULL)
 
@@ -789,7 +789,7 @@ DECLARE @Product BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel = '
 /* Step 1: insert the mainCategory */
  INSERT INTO ReferenceItem (Code, ReferenceCategoryId ,Validity, CreatedOn, CreatedBy)
  SELECT distinct  P.MainCategory, @MainCategory,1, @CreatedOn, @CreatedBy
- FROM [_ImportProduct] P
+ FROM #Product P
  LEFT JOIN ReferenceItem ri on P.MainCategory COLLATE SQL_Latin1_General_CP1_CI_AS = RI.Code COLLATE SQL_Latin1_General_CP1_CI_AS and RI.ReferenceCategoryId = @MainCategory
  WHERE ri.Id IS NULL
  GROUP BY P.MainCategory
@@ -797,7 +797,7 @@ DECLARE @Product BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel = '
  /* Step 2 : insert the secondCategory  */
  INSERT INTO ReferenceItem(Code, ReferenceCategoryId ,Validity , ParentId, CreatedOn, CreatedBy)
  SELECT distinct  P.SecondCategory, @SecondCategory,1, rip.Id, @CreatedOn, @CreatedBy
- FROM [_ImportProduct] P
+ FROM #Product P
  INNER JOIN ReferenceItem rip on rip.Code COLLATE SQL_Latin1_General_CP1_CI_AS = p.MainCategory COLLATE SQL_Latin1_General_CP1_CI_AS
  LEFT JOIN ReferenceItem ri on P.SecondCategory COLLATE SQL_Latin1_General_CP1_CI_AS = RI.Code and RI.ReferenceCategoryId = @SecondCategory
  WHERE ri.Id IS NULL
@@ -806,7 +806,7 @@ DECLARE @Product BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel = '
  /* Step 3 : insert the product */
  INSERT INTO ReferenceItem (code,ReferenceCategoryId,Validity,ParentId, CreatedOn, CreatedBy)
  SELECT distinct  P.REFERENCE , @Product,1, rip.Id, @CreatedOn, @CreatedBy
- FROM [_ImportProduct] P
+ FROM #Product P
  INNER JOIN ReferenceItem rip on rip.Code  COLLATE SQL_Latin1_General_CP1_CI_AS = p.SecondCategory COLLATE SQL_Latin1_General_CP1_CI_AS
  LEFT JOIN ReferenceItem ri on P.REFERENCE = RI.Code COLLATE SQL_Latin1_General_CP1_CI_AS and RI.ReferenceCategoryId = @Product
  WHERE rip.ReferenceCategoryId = @SecondCategory AND ri.Id IS NULL
@@ -835,21 +835,21 @@ DECLARE @Product BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel = '
  INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang, CreatedOn, CreatedBy)
  SELECT ri.Id, p.Nom, 'en', @CreatedOn, @CreatedBy
  FROM ReferenceItem ri 
- INNER JOIN _ImportProduct p on ri.Code COLLATE SQL_Latin1_General_CP1_CI_AS = p.[REFERENCE] COLLATE SQL_Latin1_General_CP1_CI_AS
+ INNER JOIN #Product p on ri.Code COLLATE SQL_Latin1_General_CP1_CI_AS = p.[REFERENCE] COLLATE SQL_Latin1_General_CP1_CI_AS
  LEFT JOIN ReferenceLabel RL ON ri.Id = RL.ReferenceItemId and RL.Lang COLLATE SQL_Latin1_General_CP1_CI_AS = 'en'
  where ri.ReferenceCategoryId = @Product AND RL.Id IS NULL
 
  INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang, CreatedOn, CreatedBy)
  SELECT ri.Id, p.Nom, 'fr', @CreatedOn, @CreatedBy
  FROM ReferenceItem ri 
- INNER JOIN _ImportProduct p on ri.Code COLLATE SQL_Latin1_General_CP1_CI_AS = p.[REFERENCE] COLLATE SQL_Latin1_General_CP1_CI_AS
+ INNER JOIN #Product p on ri.Code COLLATE SQL_Latin1_General_CP1_CI_AS = p.[REFERENCE] COLLATE SQL_Latin1_General_CP1_CI_AS
  LEFT JOIN ReferenceLabel RL ON ri.Id = RL.ReferenceItemId and RL.Lang COLLATE SQL_Latin1_General_CP1_CI_AS = 'fr'
  where ri.ReferenceCategoryId = @Product AND RL.Id IS NULL
 
  INSERT INTO ReferenceLabel(ReferenceItemId,Label,Lang, CreatedOn, CreatedBy)
  SELECT ri.Id, p.Nom, 'cn', @CreatedOn, @CreatedBy
  FROM ReferenceItem ri 
- INNER JOIN _ImportProduct p on ri.Code COLLATE SQL_Latin1_General_CP1_CI_AS = p.[REFERENCE] COLLATE SQL_Latin1_General_CP1_CI_AS
+ INNER JOIN #Product p on ri.Code COLLATE SQL_Latin1_General_CP1_CI_AS = p.[REFERENCE] COLLATE SQL_Latin1_General_CP1_CI_AS
  LEFT JOIN ReferenceLabel RL ON ri.Id = RL.ReferenceItemId and RL.Lang  COLLATE SQL_Latin1_General_CP1_CI_AS = 'cn'
  where ri.ReferenceCategoryId = @Product AND RL.Id IS NULL
 
@@ -857,7 +857,7 @@ DECLARE @Product BIGINT = (SELECT Id FROM ReferenceCategory WHERE ShortLabel = '
 INSERT INTO Product(Price,QuantityPerBox,MinQuantity,ReferenceItemId, Size, Color, Material, Forme, CreatedOn, CreatedBy)
 SELECT DISTINCT p.[Price], p.[COLISAGE], 1, ri.Id, p.TAILLE, p.COULEUR, p.MATIERE, p.forme, @CreatedOn, @CreatedBy
 FROM ReferenceItem ri
-INNER JOIN _ImportProduct p ON p.Reference COLLATE SQL_Latin1_General_CP1_CI_AS = ri.Code COLLATE SQL_Latin1_General_CP1_CI_AS
+INNER JOIN #Product p ON p.Reference COLLATE SQL_Latin1_General_CP1_CI_AS = ri.Code COLLATE SQL_Latin1_General_CP1_CI_AS
 LEFT JOIN Product PP ON ri.Id = PP.ReferenceItemId 
 WHERE PP.Id IS NULL -- Only insert the not yet insert product, if already in db, the product will not be inserted, but the property will not be updated
 -- TODO: improvement: update the property if data has been updated
