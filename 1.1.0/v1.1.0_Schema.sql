@@ -56,3 +56,37 @@ GO
 * DATE : 13/10/2021 
 * Description : Add ActualCreatedOn column in product table 
 */
+
+
+
+/* 
+* START 
+* Author : ZLI
+* DATE : 25/10/2021 
+* Description : Constraint Unique code in referenceItem
+*/
+
+IF NOT EXISTS (SELECT 
+    OBJECT_NAME(OBJECT_ID) AS NameofConstraint
+        ,SCHEMA_NAME(schema_id) AS SchemaName
+        ,OBJECT_NAME(parent_object_id) AS TableName
+        ,type_desc AS ConstraintType
+    FROM sys.objects
+    WHERE type_desc LIKE '%CONSTRAINT'
+        AND OBJECT_NAME(OBJECT_ID)='Unique_ReferenceItem_Code')
+BEGIN
+	ALTER TABLE ReferenceItem
+	ALTER COLUMN Code NVARCHAR(400) NOT NULL
+
+	ALTER TABLE ReferenceItem
+	ADD CONSTRAINT Unique_ReferenceItem_Code 
+	UNIQUE(Code)
+END
+GO
+
+/* 
+* END 
+* Author : ZLI
+* DATE : 25/10/2021 
+* Description : Constraint Unique code in referenceItem
+*/
